@@ -1,0 +1,29 @@
+{
+  "name": "PWA | Example",
+  "short_name": "pwaExample",
+  "description": "pwa 연습중",
+  "theme_color": "#c7891e",
+  "background_color": "#29c254",
+  "orientation": "portrait",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]  
+}
+

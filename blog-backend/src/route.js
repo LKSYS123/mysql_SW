@@ -10,9 +10,15 @@ router.post('/delete/data', controller.api.deleteData);
 router.post('/api/addPost', controller.api.addPost);
 router.get('/api/posts', controller.api.getPostList);
 router.get('/api/post/:id', controller.api.getPost);
-router.post('/register', controller.api.register);
-router.post('/login', controller.api.login);
-router.get('/authCheck', controller.api.authCheck);
-router.post('/logout', controller.api.logout);
+router.post('/api/updatePost', controller.api.updatePost);
+router.post('/api/deletePost', controller.api.deletePost);
+// router.post('/api/updatePost/:id', controller.api.updatePost);
+// router.post('/api/deletePost/:id', controller.api.deletePost);
+
+
+router.post('/api/register', controller.api.register);
+router.post('/api/login', controller.api.login);
+router.post('/api/loginCheck/:UserId', controller.api.loginCheck);
+router.post('/api/logout', controller.api.logout);
 
 module.exports = router;

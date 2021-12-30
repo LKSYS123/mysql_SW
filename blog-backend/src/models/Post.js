@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
          type: DataTypes.STRING(200),
          allowNull: false
        },
-       publishDate: {
+       publishedDate: {
          type: DataTypes.DATE,
          defaultValue: DataTypes.NOW
        }

@@ -1,6 +1,6 @@
 const express = require('express');
-const app = express();
 const router = require('./route');
+const app = express();
 const PORT = process.env.PORT || 4000;
 const sequelize = require('./models').sequelize;
 

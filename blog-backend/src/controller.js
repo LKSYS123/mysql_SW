@@ -17,7 +17,6 @@ module.exports = {
                     res.send(true);
                     console.log('=====회원가입 컨트롤러 완료=====');
                 } else {
-
                     console.log('=====회원가입 컨트롤러 실패=====');
                     return;
                 }
@@ -36,34 +35,43 @@ module.exports = {
             })
         },
 
+        // 로그인 체크
+        loginCheck: (req, res) => {
+            console.log('=====로그인체크 로그인체크=====');
+            for (output in req) {
+                console.log('reqreq =====> ' + output.params);
+            }
+            model.api.loginCheck(req.params, result => {
+                if (result[0]) {
+                    res.send(result[0]);
+                    console.log('=====로그인체크 컨트롤러 성공=====')
+                } else {
+                    console.log('=====로그인체크 컨트롤러 실패=====');
+                }
+            })
+        },
+
         // 로그아웃
         logout: (req, res, auth) => {
             if (auth) {
-                res.send(true);
                 console.log('정상적으로 로그아웃을 했습니다.');
             } else {
                 console.log('로그아웃에 실패했습니다.');
             }
         },
 
-        authCheck: (req, res, auth) => {
-            if (auth) {
-                res.send(true);
-                console.log('authCheck을 정상적으로 실행했습니다.');
-            } else {
-                console.log('authCheck에서 에러가 발생했습니다.');
-            }
-        },
-
         // 포스트 입력
         addPost: (req, res) => {
             const body = req.body;
+            console.log('body body', body);
             model.api.addPost(body, result => {
                 if (result) {
-                    res.send(true);
+                    const post = JSON.stringify(body);
+                    res.send(post);
                 }
             })
         },
+
         // 포스트목록 조회
         getPostList: (req, res) => {
             model.api.getPostList(result => {
@@ -73,15 +81,40 @@ module.exports = {
 
         // 포스트 조회
         getPost: (req, res) => {
-            const body = req.body.keys;
-            console.log('body ======> ' + JSON.stringify(body));
-            model.api.getPost(body, result => {
+            model.api.getPost(req.params, result => {
                 if (result) {
-                    console.log('getPost ======> ' + JSON.stringify(result));
                     return res.send(result)
                 }
             })
         },
+
+        // 포스트 수정
+        updatePost: (req, res) => {
+            const body = req.body;
+            model.api.updatePost(body, result => {
+                if (result) {
+                    return res.send(true)
+                }
+            });
+        },
+        // 포스트 삭제
+        deletePost: (req, res) => {
+            const body = req.body;
+            model.api.deletePost(body, result => {
+                if (result) {
+                    return res.send(true)
+                }
+            });
+        },
+
+        // // 포스트 삭제
+        // deletePost: (req, res) => {
+        //     model.api.deletePost(req.params, result => {
+        //         if (result) {
+        //             res.send(true)
+        //         }
+        //     })
+        // },
 
         // 예시 데이터
         getData: (req, res) => {
